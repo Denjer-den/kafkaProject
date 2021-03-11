@@ -15,28 +15,26 @@ skinparam {
   CollectionsBorderColor DarkSlateGray
   CollectionsBackgroundColor RoyalBlue
 }
-class Controller{}
 
-interface Flipper{}
+class Controller
 
-class QuoteFlip{}
+interface Flipper
+
+class QuoteFlip
 
 interface Counter
 
-class CountCharQuote{}
+class CountCharQuote
 
-class Quote{}
+class Quote
 
 interface Saver
 
-class DAO{}
+class DAO
 
-class SendQuote{}
+class SendQuote
 
 interface Sender
-
-class Main{}
-
 
 Flipper *-- Quote
 Flipper <|-- QuoteFlip
@@ -45,10 +43,11 @@ Counter <|-- CountCharQuote
 Saver *-- Quote
 Saver <|-- DAO
 Sender <|-- SendQuote
-Sender *-- DAO
-Main o-- Sender
+SendQuote *-- DAO
+Controller o-- Sender
 Controller o-- Flipper
 Controller o-- Counter
 Controller o-- Saver
+Saver *-- CountCharQuote
 
 @enduml
