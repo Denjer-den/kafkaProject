@@ -1,0 +1,51 @@
+@startuml
+Title "My service architecture"
+skinparam {
+  ArrowColor DarkSlateGray
+  ActorBorderColor DarkSlateGray
+  ActorBackgroundColor SteelBlue
+  ActorFontColor DarkSlateGray
+  ParticipantBorderColor DarkSlateGray
+  ParticipantBackgroundColor SteelBlue
+  ParticipantFontColor White
+  DatabaseBorderColor DarkSlateGray
+  DatabaseBackgroundColor SteelBlue
+  LifeLineBorderColor DarkSlateGray
+  LifeLineBackgroundColor SteelBlue
+  CollectionsBorderColor DarkSlateGray
+  CollectionsBackgroundColor RoyalBlue
+}
+class Controller{}
+
+interface Flip
+
+class QuoteFlip{}
+
+interface Count
+
+class CountCharQuote{}
+
+class Quote{}
+
+interface Saver
+
+class DAO{}
+
+class SendQuote{}
+
+interface Sender
+
+Controller *-- Quote
+Flip *-- Quote
+Flip <|-- QuoteFlip
+Count 	*-- Quote
+Count <|-- CountCharQuote
+Saver *-- Quote
+Saver <|-- DAO
+Sender *-- SendQuote
+Sender <|-- DAO
+Controller *-- SendQuote
+
+
+
+@enduml
