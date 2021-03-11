@@ -17,11 +17,11 @@ skinparam {
 }
 class Controller{}
 
-interface Flip
+interface Flipper{}
 
 class QuoteFlip{}
 
-interface Count
+interface Counter
 
 class CountCharQuote{}
 
@@ -35,17 +35,20 @@ class SendQuote{}
 
 interface Sender
 
-Controller *-- Quote
-Flip *-- Quote
-Flip <|-- QuoteFlip
-Count 	*-- Quote
-Count <|-- CountCharQuote
+class Main{}
+
+
+Flipper *-- Quote
+Flipper <|-- QuoteFlip
+Counter *-- Quote
+Counter <|-- CountCharQuote
 Saver *-- Quote
 Saver <|-- DAO
-Sender *-- SendQuote
-Sender <|-- DAO
-Controller *-- SendQuote
-
-
+Sender <|-- SendQuote
+Sender *-- DAO
+Main o-- Sender
+Controller o-- Flipper
+Controller o-- Counter
+Controller o-- Saver
 
 @enduml
