@@ -43,7 +43,7 @@ Counter <|-- CountCharQuote
 Saver *-- Quote
 Saver <|-- DAO
 Sender <|-- SendQuote
-SendQuote *-- DAO
+Sender *-- DAO
 Controller o-- Sender
 Controller o-- Flipper
 Controller o-- Counter
