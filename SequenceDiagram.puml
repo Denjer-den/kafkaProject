@@ -1,0 +1,21 @@
+@startuml
+
+skinparam responseMessageBelowArrow true
+
+Quote.rest -> Controller : quote
+Controller -> Flipper : flip()
+Flipper -> QuoteFlip : flip()
+QuoteFlip -> Controller : inverted quote
+Controller -> Counter : count()
+Counter -> CountCharQuote : count()
+Controller -> Saver : save()
+Saver -> DAO : save()
+
+User -> Controller : request count and inverted quote
+Controller -> Sender : send()
+Sender -> SendQuote : send()
+SendQuote -> DAO
+DAO -> SendQuote : count, inverted quote
+SendQuote -> User : count, inverted quote
+
+@enduml
