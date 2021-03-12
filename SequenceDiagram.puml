@@ -2,20 +2,19 @@
 
 skinparam responseMessageBelowArrow true
 
-Quote.rest -> Controller : quote
-Controller -> Flipper : flip()
-Flipper -> QuoteFlip : flip()
-QuoteFlip -> Controller : inverted quote
-Controller -> Counter : count()
-Counter -> CountCharQuote : count()
-Controller -> Saver : save()
-Saver -> DAO : save()
+Scheduler -> QuotesRestCrawler : crawl() every 10s
+Quote.rest <- QuotesRestCrawler : request
+Quote.rest -> QuotesRestCrawler : response
+QuotesRestCrawler -> Scheduler : quote
+Scheduler -> QuoteFlip : flip()
+QuoteFlip -> Scheduler : inverted quote
+Scheduler -> CountCharQuote : count()
+Scheduler -> DAO : save()
+@enduml
 
-User -> Controller : request count and inverted quote
-Controller -> Sender : send()
-Sender -> SendQuote : send()
+@startuml
+Main -> SendQuote : send()
 SendQuote -> DAO
 DAO -> SendQuote : count, inverted quote
-SendQuote -> User : count, inverted quote
-
+SendQuote -> http : count, inverted quote
 @enduml
