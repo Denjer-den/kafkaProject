@@ -16,7 +16,10 @@ skinparam {
   CollectionsBackgroundColor RoyalBlue
 }
 
-class Controller
+class SimpleQuote
+
+interface Quote
+
 
 interface Flipper
 
@@ -26,28 +29,29 @@ interface Counter
 
 class CountCharQuote
 
-class Quote
-
-interface Saver
+interface Repository
 
 class DAO
 
+interface Controller
+
 class SendQuote
 
-interface Sender
+interface Crawler
 
+class QuotesRestCrawler
+
+Crawler <|-- QuotesRestCrawler
+Crawler *-- Quote
+Quote <|-- SimpleQuote
 Flipper *-- Quote
 Flipper <|-- QuoteFlip
 Counter *-- Quote
 Counter <|-- CountCharQuote
-Saver *-- Quote
-Saver <|-- DAO
-Sender <|-- SendQuote
-Sender *-- DAO
-Controller o-- Sender
-Controller o-- Flipper
-Controller o-- Counter
-Controller o-- Saver
-Saver *-- CountCharQuote
+Repository *-- Quote
+Repository <|-- DAO
+Controller *-- Quote
+Controller <|-- SendQuote
+Repository *-- Controller
 
 @enduml
