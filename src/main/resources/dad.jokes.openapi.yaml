@@ -1,0 +1,52 @@
+openapi: 3.0.2
+info:
+  version: '1.0'
+  title: Dad Jokes demo
+  description: Dad Jokes demo
+
+tags:
+  - name: DadJoke
+
+servers:
+  - url: 'https://icanhazdadjoke.com'
+
+paths:
+
+  /:
+    get:
+      tags:
+        - DadJoke
+      summary: Get Random Joke
+      description: Get Random Joke
+      parameters:
+        - in: header
+          schema:
+            type: string
+          name: User-Agent
+          description: user agent
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+               $ref: "#/components/schemas/DadJoke"
+
+        default:
+          description: Error
+
+components:
+  schemas:
+    DadJoke:
+      type: object
+      properties:
+        id:
+          type: string
+        joke:
+          type: string
+        status:
+          type: string
+
+    DadJokeRequest:
+      type: string
