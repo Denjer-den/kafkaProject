@@ -1,6 +1,6 @@
-package jokes.counter;
+package com.dkrysov.kafkaproject.jokes.counter;
 
-import jokes.joke.Joke;
+import com.dkrysov.kafkaproject.jokes.joke.Joke;
 
 public class JokeCounter implements Counter {
 

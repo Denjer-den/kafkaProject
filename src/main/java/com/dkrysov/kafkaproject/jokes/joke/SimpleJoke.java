@@ -1,4 +1,4 @@
-package jokes.joke;
+package com.dkrysov.kafkaproject.jokes.joke;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

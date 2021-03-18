@@ -1,10 +1,10 @@
 package com.dkrysov.kafkaproject;
 
-import jokes.counter.Counter;
-import jokes.crawler.Crawler;
-import jokes.flipper.Flipper;
-import jokes.joke.Joke;
-import jokes.joke.SimpleJoke;
+import com.dkrysov.kafkaproject.jokes.counter.Counter;
+import com.dkrysov.kafkaproject.jokes.crawler.Crawler;
+import com.dkrysov.kafkaproject.jokes.flipper.Flipper;
+import com.dkrysov.kafkaproject.jokes.joke.Joke;
+import com.dkrysov.kafkaproject.jokes.joke.SimpleJoke;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -30,7 +30,7 @@ public class KafkaprojectApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Joke joke = new SimpleJoke(crawler.crawl());
+        Joke joke = crawler.crawl();
         log.info(String.valueOf(joke));
         log.info(String.valueOf(counter.count(joke)));
         log.info(String.valueOf(flipper.flip(joke)));
