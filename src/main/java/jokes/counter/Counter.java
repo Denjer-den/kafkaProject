@@ -1,7 +1,7 @@
 package jokes.counter;
 
-import dad.jokes.api.model.DadJoke;
+import jokes.joke.Joke;
 
 public interface Counter {
-    int count(DadJoke dadJoke);
+    int count(Joke joke);
 }

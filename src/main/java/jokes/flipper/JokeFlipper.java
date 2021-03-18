@@ -1,22 +1,19 @@
 package jokes.flipper;
 
-import dad.jokes.api.model.DadJoke;
+import jokes.joke.Joke;
+import jokes.joke.SimpleJoke;
 
 public class JokeFlipper implements Flipper {
 
     public JokeFlipper() {
-
     }
 
     @Override
-    public DadJoke flip(DadJoke dadJoke) {
+    public Joke flip(Joke dadJoke) {
 
         String str = dadJoke.getJoke();
 
-        assert str != null;
-        dadJoke.setJoke(new StringBuilder(str).reverse().toString());
-
-        return dadJoke;
+        return new SimpleJoke(new StringBuilder(str).reverse().toString());
     }
 }
 

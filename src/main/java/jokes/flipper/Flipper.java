@@ -1,7 +1,7 @@
 package jokes.flipper;
 
-import dad.jokes.api.model.DadJoke;
+import jokes.joke.Joke;
 
 public interface Flipper {
-    DadJoke flip(DadJoke dadJoke);
+    Joke flip(Joke joke);
 }

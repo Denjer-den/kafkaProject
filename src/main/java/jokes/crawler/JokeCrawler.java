@@ -1,16 +1,14 @@
 package jokes.crawler;
 
 import dad.jokes.api.DadJokeApi;
-import dad.jokes.api.model.DadJoke;
+import jokes.exceptions.JokeValidationException;
 
 public class JokeCrawler implements Crawler {
 
-    private String joke;
-    private DadJoke dadJoke;
+    DadJokeApi dadJokeApi;
 
     public JokeCrawler(DadJokeApi dadJokeApi) {
-        dadJoke = dadJokeApi.rootGet("dan");
-        joke = dadJoke.getJoke();
+        this.dadJokeApi = dadJokeApi;
     }
 
     public JokeCrawler() {
@@ -19,11 +17,10 @@ public class JokeCrawler implements Crawler {
 
     @Override
     public String crawl() {
+        String joke = dadJokeApi.rootGet("dan").getJoke();
+        if (joke == null) {
+            throw new JokeValidationException("Joke can't be null");
+        }
         return joke;
-    }
-
-    @Override
-    public DadJoke getDadJoke() {
-        return dadJoke;
     }
 }
