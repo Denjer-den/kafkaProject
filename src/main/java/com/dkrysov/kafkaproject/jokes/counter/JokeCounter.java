@@ -9,7 +9,7 @@ public class JokeCounter implements Counter {
     }
 
     @Override
-    public int count(Joke joke) {
+    public int count(final Joke joke) {
         String str = joke.getJoke();
         int countChars = 0;
         for (char element : str.toCharArray()) {
