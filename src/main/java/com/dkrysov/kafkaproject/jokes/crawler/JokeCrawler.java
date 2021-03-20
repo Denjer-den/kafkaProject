@@ -19,10 +19,12 @@ public class JokeCrawler implements Crawler {
 
     @Override
     public Joke crawl() {
-        String joke = dadJokeApi.rootGet("dan").getJoke();
-        if (joke == null) {
+        String str = dadJokeApi.rootGet("dan").getJoke();
+        if (str == null) {
             throw new JokeValidationException("Joke can't be null");
         }
-        return new SimpleJoke(joke);
+        Joke joke = new SimpleJoke();
+        joke.setJoke(str);
+        return joke;
     }
 }
