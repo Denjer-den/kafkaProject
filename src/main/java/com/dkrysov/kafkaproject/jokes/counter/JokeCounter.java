@@ -4,10 +4,6 @@ import com.dkrysov.kafkaproject.jokes.joke.Joke;
 
 public class JokeCounter implements Counter {
 
-    public JokeCounter() {
-
-    }
-
     @Override
     public int count(final Joke joke) {
         String str = joke.getJoke();

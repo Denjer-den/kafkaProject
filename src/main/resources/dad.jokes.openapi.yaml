@@ -31,7 +31,7 @@ paths:
           content:
             application/json:
               schema:
-               $ref: "#/components/schemas/DadJoke"
+                $ref: "#/components/schemas/DadJoke"
 
         default:
           description: Error

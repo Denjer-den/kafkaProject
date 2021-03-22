@@ -1,9 +1,9 @@
 package com.dkrysov.kafkaproject.jokes.crawler;
 
+import com.dkrysov.kafkaproject.jokes.exceptions.JokeValidationException;
 import com.dkrysov.kafkaproject.jokes.joke.Joke;
 import com.dkrysov.kafkaproject.jokes.joke.SimpleJoke;
 import dad.jokes.api.DadJokeApi;
-import com.dkrysov.kafkaproject.jokes.exceptions.JokeValidationException;
 
 public class JokeCrawler implements Crawler {
 
@@ -11,10 +11,6 @@ public class JokeCrawler implements Crawler {
 
     public JokeCrawler(final DadJokeApi dadJokeApi) {
         this.dadJokeApi = dadJokeApi;
-    }
-
-    public JokeCrawler() {
-
     }
 
     @Override

@@ -25,12 +25,11 @@ public class Controller {
 
         try {
             final Joke joke = jokeService.getJoke(id);
-            log.info("Joke № {}. Count chars in invert joke = {} ", joke.getId(), joke.getJoke());
+            log.info("Joke № {}. Count chars in invert joke = {}. Joke = {} ", joke.getId(), joke.getCount(), joke.getJoke());
             return joke;
         } catch (Exception e) {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "Joke does not exist by this id");
+                    HttpStatus.NOT_FOUND, "Joke does not exist by this id");
         }
-
     }
 }
